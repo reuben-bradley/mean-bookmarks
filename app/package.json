@@ -1,0 +1,13 @@
+{
+    "name": "mean-bookmarks",
+    "version": "0.1.0",
+    "description": "Small project exploring the use of node and express",
+    "author": "Reuben Bradley <reuben.m.bradley@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "start": "nodemon -L --watch . ./server.js"
+    },
+    "dependencies": {
+        "express": "~4.15.2"
+    }
+}

@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+    nodeserver:
+        build: .
+        volumes:
+            - "./app:/app"
+        ports:
+            - "8090:8090"
