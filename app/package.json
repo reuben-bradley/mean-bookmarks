@@ -4,10 +4,13 @@
     "description": "Small project exploring the use of node and express",
     "author": "Reuben Bradley <reuben.m.bradley@gmail.com>",
     "license": "MIT",
+    "main": "app/server.js",
     "scripts": {
-        "start": "nodemon -L --watch . ./server.js"
+        "start": "nodemon -L --watch . ./server.js --env=dev"
     },
     "dependencies": {
-        "express": "~4.15.2"
+        "express": "~4.15.2",
+        "express-handlebars": "~3.0.0",
+        "mongodb": "~2.2.26"
     }
 }

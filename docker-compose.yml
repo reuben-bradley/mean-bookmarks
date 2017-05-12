@@ -3,7 +3,13 @@ version: "2"
 services:
     nodeserver:
         build: .
+        links:
+            - db
         volumes:
             - "./app:/app"
         ports:
             - "8090:8090"
+    db:
+        image: mongo
+        ports:
+            - "27017:27017"

@@ -1,0 +1,12 @@
+<h1>Greetings, {{user}}</h1>
+<p>Hello from the other side!</p>
+
+<p>List of bookmarks currently saved:</p>
+<ul>
+    {{#bookmarks}}
+    <li>{{title}} - {{url}}</li>
+    {{/bookmarks}}
+    {{^bookmarks}}
+    <li>Move along, nothing to see here</li>
+    {{/bookmarks}}
+</ul>
