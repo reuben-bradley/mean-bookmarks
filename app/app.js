@@ -7,6 +7,7 @@
 // Import the pieces that we need
 var express = require('express');
 var handlebars = require('express-handlebars');
+var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var MongoClient = require('mongodb').MongoClient;
 
@@ -21,7 +22,6 @@ MongoClient.connect(connectString, function( err, database ) {
     if ( err ) {
         return console.log(err);
     }
-    console.log(dbConfig);
     db = database;
 });
 
@@ -34,6 +34,7 @@ var handlebarsConfig = {
 var app = express();
 app.engine('hbs', handlebars(handlebarsConfig));
 app.set('view engine', 'hbs');
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(function( req, res, next ) {
     // Set the database so it's usable on every request
     req.db = db;
@@ -47,6 +48,15 @@ process.on('exit', function() {
     if ( db ) {
         db.close();
     }
+    console.log('Clean getaway ;-)');
+});
+
+process.on('SIGINT', function() {
+    process.exit();
+});
+
+process.on('SIGTERM', function() {
+    process.exit();
 });
 
 module.exports = app;

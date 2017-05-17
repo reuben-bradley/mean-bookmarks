@@ -1,0 +1,32 @@
+<p>Bookmark List</p>
+<ul>
+{{#bookmarks}}
+    <li>
+        <a href="{{url}}">{{title}}</a>
+        {{#tags}}<span class="tag">{{.}}</span>{{/tags}}
+        <a href="/bookmark/edit/{{_id}}">edit</a>
+        <a href="/bookmark/delete/{{_id}}">delete</a>
+    </li>
+{{/bookmarks}}
+{{^bookmarks}}
+    <li>No bookmarks to display.</li>
+{{/bookmarks}}
+</ul>
+
+<form method="post" action="/bookmark/add">
+    <div class="form-row">
+        <label for="bookmark-title">Title:</label>
+        <input type="text" name="title" id="bookmark-title" placeholder="Enter a title for the bookmark" required>
+    </div>
+    <div class="form-row">
+        <label for="bookmark-url">URL:</label>
+        <input type="text" name="url" id="bookmark-url" placeholder="Enter the URL" required>
+    </div>
+    <div class="form-row">
+        <label for="bookmark-tags">Tags:</label>
+        <input type="text" name="tags" id="bookmark-tags" placeholder="Tag list separated by commas">
+    </div>
+    <div class="form-row">
+        <button type="submit">Save</button>
+    </div>
+</form>
