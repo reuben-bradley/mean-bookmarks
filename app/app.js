@@ -23,6 +23,8 @@ MongoClient.connect(connectString, function( err, database ) {
         return console.log(err);
     }
     db = database;
+    // TODO: Import password from "secrets" file!
+    db.authenticate(dbConfig.user, dbConfig.password);
 });
 
 var handlebarsConfig = {

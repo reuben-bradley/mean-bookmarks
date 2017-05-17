@@ -2,18 +2,24 @@
  * Configuration file for the application
  */
 
+var SECRETS = require('./secrets');
+
 var config = {
     env: 'production',
     db: {
         dev: {
             host: 'db',
             port: '27017',
-            database: 'bookmarker_app'
+            database: 'bookmarker_app',
+            user: 'bookmarker',
+            password: SECRETS.db_password
         },
         production: {
             host: 'db',
             port: '27017',
-            database: 'bookmarker_app'
+            database: 'bookmarker_app',
+            user: 'bookmarker',
+            password: SECRETS.db_password
         }
     }
 };
