@@ -46,19 +46,33 @@ app.use(function( req, res, next ) {
 // Import the routes
 app.use('/', routes);
 
-process.on('exit', function() {
-    if ( db ) {
-        db.close();
-    }
-    console.log('Clean getaway ;-)');
+process.on('SIGHUP', function() {
+    console.log('Received SIGHUP. Shutting down ...');
+    process.exit();
 });
 
 process.on('SIGINT', function() {
+    console.log('Received SIGINT. Shutting down ...');
     process.exit();
 });
 
 process.on('SIGTERM', function() {
+    console.log('Received SIGTERM. Shutting down ...');
     process.exit();
+});
+
+process.on('uncaughtException', function( err ) {
+    console.log('Uncaught Exception: ', err);
+});
+
+process.on('exit', function() {
+    if ( db ) {
+        try {
+            db.close();
+        }
+        catch (e) {}
+    }
+    console.log('Clean getaway ;-)');
 });
 
 module.exports = app;
