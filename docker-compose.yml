@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 
 services:
     nodeserver:
@@ -11,6 +11,8 @@ services:
             - "8090:8090"
     db:
         image: mongo
+        volumes:
+            - "./mongodb/mongod.conf:/etc/mongod.conf"
         ports:
             - "27017:27017"
-        command: mongod --auth
+        command: mongod --config /etc/mongod.conf
