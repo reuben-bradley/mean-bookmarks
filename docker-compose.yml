@@ -16,3 +16,8 @@ services:
         ports:
             - "27017:27017"
         command: mongod --config /etc/mongod.conf
+    frontend:
+        build: ./frontend
+        volumes:
+            - "./frontend/src:/src"
+            - "./backend/app/build:/build"
