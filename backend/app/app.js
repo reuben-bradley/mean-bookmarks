@@ -37,11 +37,18 @@ var app = express();
 app.engine('hbs', handlebars(handlebarsConfig));
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(function( req, res, next ) {
     // Set the database so it's usable on every request
     req.db = db;
     next();
 });
+app.getDB = function() {
+    return db;
+};
+
+// Setup the static serve route
+app.use('/build', express.static('./build', { index: false }));
 
 // Import the routes
 app.use('/', routes);
