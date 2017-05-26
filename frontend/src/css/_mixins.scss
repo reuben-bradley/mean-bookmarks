@@ -1,0 +1,24 @@
+/*
+    Mixins used in the sass styling for the site.
+
+    @author Reuben Bradley <reuben.m.bradley@gmail.com>
+*/
+
+/* Breakpoints */
+$bps: (
+    mobile: '( max-width: 767px )',
+    tablet: '( min-width: 768px )',
+    desktop: '( min-width: 1024px )',
+    wide: '( min-width: 1200px )'
+);
+
+@mixin breakpoint($label) {
+    @if map-has-key($bps, $label) {
+        @media #{map-get($bps, $label)} {
+            @content;
+        }
+    }
+    @else {
+        @warn "No breakpoint `#{$label}` found. Available breakpoints are: #{map-keys($bps)}";
+    }
+}

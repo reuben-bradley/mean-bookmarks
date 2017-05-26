@@ -1,0 +1,52 @@
+/*
+    Typography fonts, sizes, and mixins
+
+    @author Reuben Bradley <reuben.m.bradley@gmail.com>
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab');
+
+$fonts: (
+    heading: ("Roboto Slab", serif),
+    regular: ("Roboto", sans-serif)
+);
+
+$fontSizes: (
+    xsmall: 1.2rem,
+    small: 1.4rem,
+    medium: 1.6rem,
+    large: 1.8rem,
+    xlarge: 2rem,
+    xxlarge: 2.4rem,
+    massive: 3.2rem
+);
+
+@mixin font($style, $size) {
+    @if map-has-key($fonts, $style) {
+        font-family: map-get($fonts, $style);
+    }
+    @else {
+        @warn "Font style `#{$style}` not found. Available are: #{map-keys($fonts)}";
+    }
+    
+    @if map-has-key($fontSizes, $size) {
+        font-size: map-get($fontSizes, $size);
+    }
+    @else {
+        @warn "Font size `#{$size}` not found. Available are: #{map-keys($fontSizes)}";
+    }
+}
+
+
+h1 {
+    @include font('heading', 'xxlarge');
+}
+h2 {
+    @include font('heading', 'xlarge');
+}
+h3 {
+    @include font('heading', 'large');
+}
+h4 {
+    @include font('regular', 'medium');
+}
