@@ -16,6 +16,10 @@ body {
     padding: 0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -28,6 +32,7 @@ body {
 
 header {
     align-items: center;
+    box-shadow: 0 0 5px 0 #{$shadow};
     display: flex;
     height: 6rem;
     justify-content: space-between;
@@ -55,7 +60,7 @@ header {
 
 main {
     min-height: calc(100vh - 9rem);
-    padding: 0 6rem;
+    padding: 2rem 6rem 0;
 
     *:first-child {
         margin-top: 0;
