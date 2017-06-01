@@ -10,7 +10,8 @@ var config = {
     outputDir: '/build/',
     sourcePaths: {
         styles: ['./css/**/*.scss'],
-        scripts: ['./js/**/*.js']
+        scripts: ['./js/**/*.js'],
+        templates: ['./html/**/*.html']
     },
     styles: {
         bundles: [
@@ -29,8 +30,16 @@ var config = {
             },
             output: {
                 filename: '[name].js'
-            }
+            },
+            loaders: [
+                {
+                    test: /\.tsx?$/,
+                    loader: 'awesome-typescript-loader'
+                }
+            ]
         }
+    },
+    templates: {
     }
 };
 var gulp = require('gulp');
@@ -39,6 +48,7 @@ var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var chalk = require('chalk');
 var webpack = require('webpack-stream');
+var tsLoader = require('awesome-typescript-loader');
 
 var logSuccess = function ( text ) {
     console.log(chalk.bgGreen.white('Task Runner: ' + text));
@@ -109,14 +119,30 @@ gulp.task('scripts', function ( taskComplete ) {
     });
 });
 
+gulp.task('templates', function ( taskComplete ) {
+    var stream = gulp.src(config.sourcePaths.templates)
+            .pipe(gulp.dest(config.outputDir + 'html/'));
+
+    stream.on('error', function () {
+        logFailure('Templates failed.');
+        taskComplete('Templates failed.');
+    })
+    .on('end', function () {
+        logSuccess('Templates completed successfully.');
+        taskComplete();
+    });
+});
+
 
 // Build and watch tasks for production and development
 gulp.task('build', [
     'styles',
-    'scripts'
+    'scripts',
+    'templates'
 ]);
 
 gulp.task('watch', ['build'], function () {
     gulp.watch(config.sourcePaths.styles, ['styles']);
     gulp.watch(config.sourcePaths.scripts, ['scripts']);
+    gulp.watch(config.sourcePaths.templates, ['templates']);
 });

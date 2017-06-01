@@ -1,0 +1,7 @@
+
+<ul>
+    <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+    <li *ngIf="user"><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
+    <li *ngIf="!user"><a routerLink="/signup" routerLinkActive="active">Sign Up</a></li>
+    <li *ngIf="!user"><a routerLink="/login" routerLinkActive="active">Log In</a></li>
+</ul>
