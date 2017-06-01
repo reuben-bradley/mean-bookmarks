@@ -6,7 +6,7 @@
     "license": "MIT",
     "main": "app/server.js",
     "scripts": {
-        "start": "nodemon -L --watch . ./server.js --env=dev"
+        "start": "nodemon -L --watch . --ignore ./build/ ./server.js --env=dev"
     },
     "dependencies": {
         "express": "~4.15.2",
