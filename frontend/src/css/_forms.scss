@@ -1,0 +1,58 @@
+/*
+    Stylesheet for forms
+
+    @author Reuben Bradley <reuben.m.bradley@gmail.com>
+*/
+
+
+.form__row {
+    margin: 1rem 0;
+}
+
+.form__row label {
+    display: block;
+    max-width: 100%;
+
+    @include breakpoint('tablet') {
+        display: inline-block;
+        max-width: 50%;
+        width: 20rem;
+    }
+}
+
+.form__row input[type="text"],
+.form__row input[type="password"],
+.form__row input[type="email"] {
+    @include breakpoint('tablet') {
+        display: inline-block;
+        max-width: 50%;
+        width: 20rem;
+    }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    border: {
+        width: 1px;
+        style: solid;
+        color: map-get($colorPalette, black);
+        radius: 0.5rem;
+    }
+    color: map-get($text, primary);
+    display: block;
+    max-width: 100%;
+    padding: 0.4rem 0.8rem;
+
+    &.ng-invalid {
+        border-left: 5px solid map-get($text, error);
+    }
+
+    &.ng-valid {
+        border-left: 5px solid map-get($highlight, green);
+    }
+}
+
+form .alert.alert--error {
+    font-size: 0.8em;
+}

@@ -4,22 +4,52 @@
     @author Reuben Bradley <reuben.m.bradley@gmail.com>
 */
 
+$colorPalette: (
+    white: #FFFFFF,
+    black: #000000,
+    grey1: #EEEEEE,
+    grey2: #CCCCCC,
+    grey3: #8E8E8E,
+    grey4: #888888,
+    grey5: #444444,
+    red: #D8000C,
+    orange: #FFB640,
+    green: #4F8A10,
+    blue: #00529B,
+    test: #000000
+);
+
 $background: (
-    primary: #ffffff,
-    secondary: #cccccc,
-    dark: #000000
+    primary: map-get($colorPalette, white),
+    secondary: map-get($colorPalette, grey2),
+    dark: map-get($colorPalette, black),
+    error: rgba(map-get($colorPalette, red), 0.2),
+    warning: rgba(map-get($colorPalette, orange), 0.2),
+    notice: rgba(map-get($colorPalette, blue), 0.2),
+    success: rgba(map-get($colorPalette, green), 0.2)
 );
 
 $text: (
-    primary: #888888,
-    secondary: #444444,
-    light: #eeeeee
+    primary: map-get($colorPalette, grey4),
+    secondary: map-get($colorPalette, grey5),
+    light: map-get($colorPalette, grey1),
+    error: map-get($colorPalette, red),
+    warning: map-get($colorPalette, orange),
+    notice: map-get($colorPalette, blue),
+    success: map-get($colorPalette, green)
+);
+
+$border: (
+    error: map-get($colorPalette, red),
+    warning: map-get($colorPalette, orange),
+    notice: map-get($colorPalette, blue),
+    success: map-get($colorPalette, green)
 );
 
 $highlight: (
-    orange: #ffb640,
-    blue: #4089ff,
-    green: #12ff3e
+    orange: map-get($colorPalette, orange),
+    blue: map-get($colorPalette, blue),
+    green: map-get($colorPalette, green)
 );
 
-$shadow: #8e8e8e;
+$shadow: map-get($colorPalette, grey3);

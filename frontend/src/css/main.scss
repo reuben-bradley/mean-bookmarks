@@ -26,8 +26,8 @@ html {
 
 body {
     @include font('regular', 'medium');
-    background-color: map-get($background, 'primary');
-    color: map-get($text, 'primary');
+    background-color: map-get($background, primary);
+    color: map-get($text, primary);
 }
 
 header {
@@ -77,3 +77,19 @@ footer {
         margin: 0;
     }
 }
+
+.alert {
+    border: {
+        width: 1px;
+        style: solid;
+        radius: 0.5rem;
+    }
+    padding: 1rem;
+}
+
+.alert.alert--error {
+    background-color: map-get($background, error);
+    color: map-get($text, error);
+}
+
+@import "_forms";
