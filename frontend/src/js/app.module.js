@@ -6,6 +6,7 @@
 
 var NgModule = require('@angular/core').NgModule;
 var platformBrowser = require('@angular/platform-browser');
+var FormsModule = require('@angular/forms').FormsModule;
 
 var appRouting = require('./modules/app-routes.module');
 
@@ -18,6 +19,7 @@ var signupComponent = require('./components/signup');
 var AppModule = NgModule({
         imports: [
             platformBrowser.BrowserModule,
+            FormsModule,
             appRouting
         ],
         declarations: [

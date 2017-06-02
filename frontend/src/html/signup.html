@@ -1,21 +1,44 @@
-<form>
-    <div class="form-row">
+<form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
+    <div class="form__row">
         <label for="signup-user">Username:</label>
-        <input type="text" id="signup-user" name="username" placeholder="Desired Username">
+        <input type="text" id="signup-user" name="username" class="form__control"
+                placeholder="Desired Username" required 
+                [(ngModel)]="model.username" #username="ngModel">
+        <div class="alert alert--error" [hidden]="username.valid || username.pristine">
+            Username is a required field.
+        </div>
     </div>
-    <div class="form-row">
+    <div class="form__row">
         <label for="signup-email">Email:</label>
-        <input type="email" id="signup-email" name="email" placeholder="Email Address">
+        <input type="email" id="signup-email" name="email" class="form__control"
+                placeholder="Email Address" required 
+                [(ngModel)]="model.email" #email="ngModel">
+        <div class="alert alert--error" [hidden]="email.valid || email.pristine">
+            Email is a required field.
+        </div>
     </div>
-    <div class="form-row">
+    <div class="form__row">
         <label for="signup-password">Password:</label>
-        <input type="password" id="signup-password" name="password">
+        <input type="password" id="signup-password" name="password" 
+                class="form__control" required 
+                [(ngModel)]="model.password" #password="ngModel">
+        <div class="alert alert--error" [hidden]="password.valid || password.pristine">
+            Password is a required field.
+        </div>
     </div>
-    <div class="form-row">
+    <div class="form__row">
         <label for="signup-password-confirm">Confirm Password:</label>
-        <input type="password" id="signup-password-confirm" name="confirm">
+        <input type="password" id="signup-password-confirm" name="confirm" 
+                class="form__control" required 
+                [(ngModel)]="model.confirm" #confirm="ngModel">
+        <div class="alert alert--error" [hidden]="confirm.valid || confirm.pristine">
+            Please confirm your password.
+        </div>
+        <div class="alert alert--error" [hidden]="confirm.value == password.value || confirm.pristine">
+            Passwords do not match.
+        </div>
     </div>
-    <div class="form-row">
-        <button type="submit">Sign Up!</button>
+    <div class="form__row">
+        <button type="submit" class="btn btn--primary" [disabled]="!signupForm.form.valid">Sign Up!</button>
     </div>
 </form>
